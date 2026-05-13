@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Pet Shop | Mohammad AlShiblaq</title>
+    <style>
+        /* Unique Simple Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f0f7f4; /* Soft mint background */
+            color: #333;
+        }
+
+        header {
+            background-color: #ff9f43; /* Warm orange */
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 5px solid #ee5253;
+        }
+
+        nav {
+            background: #fff;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #ee5253;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .pet-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 8px 8px 0px #b2bec3; /* Unique "Pop Art" shadow */
+        }
+
+        .pet-card img {
+            width: 200px;
+            border-radius: 10px;
+        }
+
+        .video-section {
+            text-align: center;
+            background: #dfe6e9;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #636e72;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🐾 The Pet Shop 🐾</h1>
+    <p>Welcome, <strong>Mohammad AlShiblaq</strong>!</p>
+</header>
+
+<nav>
+    <a href="#dogs">Dogs</a>
+    <a href="#cats">Cats</a>
+    <a href="#video">Pet Moments</a>
+</nav>
+
+<div class="container">
+    
+    <section id="dogs">
+        <h2>Our Loyal Friends</h2>
+        <div class="pet-card">
+            <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=300&q=80" alt="Cute Golden Retriever">
+            <div>
+                <h3>Golden Retriever</h3>
+                <p>Friendly, reliable, and kind. Great for families and high-energy owners!</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="cats">
+        <h2>Elegant Felines</h2>
+        <div class="pet-card">
+            <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=300&q=80" alt="Sleepy Cat">
+            <div>
+                <h3>British Shorthair</h3>
+                <p>An easy-going companion with a distinct chunky figure and plush coat.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="video" class="video-section">
+        <h2>See Them in Action</h2>
+        <p>Watch our pets playing at the shop:</p>
+        <video width="100%" height="auto" controls poster="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg">
+            <source src="https://player.vimeo.com/external/365111161.sd.mp4?s=f5286576f30a9e9a4f4755106e23658f8b896b00&profile_id=164&oauth2_token_id=57447761" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </section>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 The Pet Shop | Created by Mohammad AlShiblaq</p>
+</footer>
+
+</body>
+</html>
