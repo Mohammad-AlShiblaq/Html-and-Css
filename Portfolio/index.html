@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammad Alshiblaq | Portfolio</title>
+    <style>
+        /* --- Reset & Core Variables --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --bg-dark: #0a0915;
+            --panel-bg: #161426;
+            --accent-pink: #ff2a74;
+            --accent-cyan: #00f0ff;
+            --text-light: #f5f5fa;
+            --text-muted: #a0a0b8;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            padding-top: 60px; /* Offset for the fixed navbar */
+        }
+
+        /* --- Fixed Navigation Bar --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-color: var(--panel-bg);
+            border-bottom: 2px solid var(--accent-pink);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10%;
+            z-index: 1000;
+        }
+
+        .nav-logo {
+            font-weight: bold;
+            font-size: 1.4rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 18px 20px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover effect on links */
+        .nav-links a:hover {
+            background-color: var(--accent-pink);
+            color: white;
+            text-shadow: 0 0 8px rgba(255,255,255,0.6);
+        }
+
+        /* --- Hero Video Section with Text Overlay --- */
+        .hero-video-container {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 1;
+            filter: brightness(0.4) saturate(1.4);
+        }
+
+        .video-text-overlay {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .video-text-overlay h1 {
+            font-size: 3.5rem;
+            color: white;
+            text-shadow: 0 0 20px var(--accent-pink);
+            margin-bottom: 10px;
+        }
+
+        .video-text-overlay p {
+            font-size: 1.5rem;
+            color: var(--accent-cyan);
+        }
+
+        /* --- Main Content Layout --- */
+        .container {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        /* --- Profile Image Formatting (Centered, Rounded, Filtered) --- */
+        .profile-image-wrapper {
+            display: flex;
+            justify-content: center; /* Center execution */
+            margin-bottom: 50px;
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%; /* Rounded edges */
+            border: 4px solid var(--accent-cyan);
+            filter: hue-rotate(45deg) contrast(1.1); /* CSS Filter applied */
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
+        }
+
+        /* --- Interactive Paragraph Hover Element --- */
+        .interactive-p {
+            background-color: var(--panel-bg);
+            padding: 20px;
+            border-left: 4px solid var(--accent-pink);
+            border-radius: 4px;
+            margin-bottom: 50px;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* CSS Hover Effect for paragraph element */
+        .interactive-p:hover {
+            transform: translateX(10px);
+            background-color: #221e3b;
+            color: var(--accent-cyan);
+            box-shadow: -5px 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* --- Two-Column Layout Showcase --- */
+        .two-column-grid {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .column {
+            flex: 1;
+            height: 350px; /* Specific height assignment */
+            background-color: var(--panel-bg);
+            border: 1px solid #2d2a4a;
+            border-radius: 8px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .column h3 {
+            color: var(--accent-pink);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* Specific font color inside components */
+        .column p {
+            color: #d1d1e0; 
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        /* --- Dynamic Image Hover Grid --- */
+        .image-showcase-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        /* Card Type A: Static Text Overlay on Image */
+        .static-overlay-box {
+            position: relative;
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+
+        .static-overlay-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.5);
+        }
+
+        .static-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            width: 90%;
+        }
+
+        .static-text h4 {
+            font-size: 1.8rem;
+            color: var(--accent-cyan);
+            margin-bottom: 5px;
+        }
+
+        /* Card Type B: Image Overlay Fade on Hover */
+        .fade-overlay-box {
+            position: relative;
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+
+        .fade-overlay-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .fade-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 42, 116, 0.9), rgba(10, 9, 21, 0.95));
+            opacity: 0; /* Hidden by default */
+            transition: opacity 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Trigger overlay opacity on hover */
+        .fade-overlay-box:hover .fade-overlay {
+            opacity: 1;
+        }
+
+        .fade-overlay h4 {
+            color: white;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+
+        .fade-overlay p {
+            color: var(--accent-cyan);
+        }
+
+        .fade-overlay-box:hover .fade-overlay h4 {
+            transform: translateY(0);
+        }
+
+        /* --- Styled CSS Data Table --- */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin-bottom: 60px;
+            background-color: var(--panel-bg);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            color: var(--text-light);
+        }
+
+        /* Border configuration */
+        table, th, td {
+            border: 2px solid #2d2a4a;
+        }
+
+        /* Header Specific Row Formatting */
+        tr:first-child {
+            background-color: var(--accent-pink); /* Header background color */
+        }
+
+        tr:first-child th {
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Padding cell assignments */
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        tr:nth-child(even):not(:first-child) {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        /* --- Styled Footer Component --- */
+        footer {
+            background-color: #05040a;
+            border-top: 2px solid #2d2a4a;
+            padding: 30px 20px;
+            margin-top: 80px;
+        }
+
+        /* Centered and bold styling rule applied directly */
+        footer p {
+            text-align: center;
+            font-weight: bold;
+            color: var(--text-muted);
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* --- Responsive Design Adjustment --- */
+        @media (max-width: 768px) {
+            .two-column-grid, .image-showcase-grid {
+                flex-direction: column;
+                grid-template-columns: 1fr;
+            }
+            .column {
+                height: auto;
+                min-height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-logo">Mohammad A.</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#how-to">How To Create a Fixed Menu</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero-video-container">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-laser-lights-background-32128-large.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <div class="video-text-overlay">
+            <h1>Mohammad Alshiblaq</h1>
+            <p>Creative Student & Front-End Builder</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="profile-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" alt="Mohammad Alshiblaq" class="profile-img">
+            </div>
+            
+            <p class="interactive-p">
+                Hello! I am Mohammad Alshiblaq, an ambitious student working with digital interface architectures. This unique, colorful space showcases my development projects, stylistic experimentation, and functional modules. Hover over this card to watch the color and translation mechanics morph interactively!
+            </p>
+        </section>
+
+        <section id="how-to">
+            <h2 class="section-title">Two Column Layout & Fixed Menu Logic</h2>
+            <div class="two-column-grid">
+                <div class="column">
+                    <h3>Column One: Core Focus</h3>
+                    <p>This layout uses flexbox processing wrappers. By utilizing explicit width distribution handles alongside programmatic height rules, we create an organized container for text materials.</p>
+                </div>
+                <div class="column">
+                    <h3>Column Two: The Fixed Navbar Blueprint</h3>
+                    <p>To create a fixed layout menu asset like the one deployed at the top of this viewport, apply <code>position: fixed;</code> within the CSS selection body, pinning top and left vectors to zero coordinates.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Image Overlay Implementations</h2>
+            <div class="image-showcase-grid">
+                
+                <div class="static-overlay-box">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80" alt="Cyber Grid">
+                    <div class="static-text">
+                        <h4>Static Overlay Text</h4>
+                        <p>This text is absolutely positioned permanently over the image.</p>
+                    </div>
+                </div>
+
+                <div class="fade-overlay-box">
+                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80" alt="Matrix Code">
+                    <div class="fade-overlay">
+                        <h4>Fade Overlay Activated</h4>
+                        <p>This panel uses transition logic to modify the background alpha channels smoothly.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Course Registration Matrix</h2>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Module Token</th>
+                        <th>Course Identification Label</th>
+                        <th>Performance Score</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>HTML</td>
+                        <td>A+</td>
+                    </tr>
+          
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Mohammad Alshiblaq. Built using pure HTML & CSS.</p>
+    </footer>
+
+</body>
+</html>
